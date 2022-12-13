@@ -1,0 +1,17 @@
+{
+  "name": "todo-list-api",
+  "version": "1.0.0",
+  "description": "Aplicación para crear, editar y eliminar tareas de la vida cotidiana.",
+  "main": "src/app.js",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "keywords": [],
+  "author": "Yisel Sofia Moreno Muñoz",
+  "license": "ISC"
+}
