@@ -2,7 +2,7 @@ import Tarea from "../models/Tarea.js";
 
 export const traerTareas = async (req, res) => {
   try {
-    const tareas = await Tarea.find();
+    const tareas = await Tarea.find().populate("categoria");
     res.status(200).json(tareas);
   } catch (error) {
     res.status(404).json({ message: error.message });

@@ -15,6 +15,11 @@ const Tarea = new Schema(
       default: "Pendiente",
       required: true,
     },
+    categoria: {
+      type: Schema.Types.ObjectId,
+      ref: "categorias",
+      required: true,
+    },
   },
   {
     timestamps: true,
