@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { connection } from "./database/MongoDB.js";
+import authRoutes from "./routes/auth.routes.js";
 import tareaRoutes from "./routes/tarea.routes.js";
 import categoriaRoutes from "./routes/categoria.routes.js";
 import config from "./config.js";
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.use("/auth", authRoutes);
 app.use("/tareas", tareaRoutes);
 app.use("/categorias", categoriaRoutes);
 
