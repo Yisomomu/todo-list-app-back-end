@@ -13,4 +13,5 @@ export default {
     w: "majority",
   },
   secret_key: process.env.SECRET_KEY,
+  app_url: process.env.APP_URL || "http://localhost:3000",
 };
