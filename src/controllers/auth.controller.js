@@ -1,5 +1,7 @@
 import { hash, compare } from "bcrypt";
+import jwt from "jsonwebtoken";
 import Usuario from "./../models/Usuario.js";
+import config from "./../config.js";
 
 export const login = async (req, res) => {
   const {
@@ -17,7 +19,10 @@ export const login = async (req, res) => {
       .status(400)
       .json({ message: "Usuario o contraseña incorrectos" });
   }
-  res.status(200).json({ message: "Bienvenido" });
+  const token = jwt.sign({ id: usuario._id }, config.secret_key, {
+    expiresIn: 86400,
+  });
+  res.status(200).json({ message: "Bienvenido", token });
 };
 
 export const signup = async (req, res) => {
@@ -37,6 +42,9 @@ export const signup = async (req, res) => {
     email,
     password: hashedPassword,
   });
-  await newUser.save();
-  res.status(201).json({ message: "Usuario creado" });
+  const usuarioNuevo = await newUser.save();
+  const token = jwt.sign({ id: usuarioNuevo._id }, config.secret_key, {
+    expiresIn: 86400,
+  });
+  res.status(201).json({ message: "Usuario creado", token });
 };

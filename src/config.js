@@ -12,4 +12,5 @@ export default {
     retryWrites: true,
     w: "majority",
   },
+  secret_key: process.env.SECRET_KEY,
 };
